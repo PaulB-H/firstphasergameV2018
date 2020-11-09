@@ -10,3 +10,22 @@ This guide uses some older practices such as var instead of let. The next projec
 
 Config<br>
 [GameConfig Object Docs](https://photonstorm.github.io/phaser3-docs/Phaser.Types.Core.html#.GameConfig)
+<br>
+Game<br>
+[Game Instance](https://photonstorm.github.io/phaser3-docs/Phaser.Game.html)
+<br>
+<br>
+
+#### Issue tracker:
+
+Assets not loading<br>
+Fix: Move static files to public folder, change how assets are called
+
+    function preload() {
+        this.load.setBaseURL("assets");
+        this.load.image("sky", "sky.png");
+        ....
+    }
+
+    // server.js
+    app.use(express.static("public"));

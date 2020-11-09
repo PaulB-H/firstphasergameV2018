@@ -1,5 +1,13 @@
 # First Phaser Game version 2018
 
+<b>Post-Completion Additions:</b><br>
+Added loading screen using following guide:<br>
+[Create loading screen in Phaser 3](https://gamedevacademy.org/creating-a-preloading-screen-in-phaser-3/)<br>
+<br>
+Project now loads an example image 500 times in order to show the loading bar for long enough, else assets are so small game loads instantly and you never see loading screen
+
+<hr>
+
 Following the official first game tutorial from Phaser<br>
 [Link](https://phaser.io/tutorials/making-your-first-phaser-3-game/part1)<br>
 <br>

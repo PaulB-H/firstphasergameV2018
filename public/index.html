@@ -50,6 +50,7 @@
 				this.add.image(400, 300, "sky");
 				platforms = this.physics.add.staticGroup();
 
+				// Because we used .setScale() && platforms class is a static object, we have to tell game to refresh the info for it.
 				platforms.create(400, 568, "ground").setScale(2).refreshBody();
 
 				platforms.create(600, 400, "ground");
@@ -59,6 +60,7 @@
 				player = this.physics.add.sprite(100, 450, "dude");
 
 				player.setBounce(0.2);
+
 				player.setCollideWorldBounds(true);
 
 				this.anims.create({
@@ -90,6 +92,30 @@
 				this.physics.add.collider(player, platforms);
 
 				cursors = this.input.keyboard.createCursorKeys();
+
+				stars = this.physics.add.group({
+					key: "star",
+					repeat: 11,
+					setXY: { x: 12, y: 0, stepX: 70 },
+				});
+
+				stars.children.iterate(function (child) {
+					child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
+				});
+
+				this.physics.add.collider(stars, platforms);
+
+				this.physics.add.overlap(
+					player,
+					stars,
+					collectStar,
+					null,
+					this
+				);
+
+				function collectStar(player, star) {
+					star.disableBody(true, true);
+				}
 			}
 
 			function update() {
